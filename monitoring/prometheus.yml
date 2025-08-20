@@ -1,0 +1,117 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - "rules/*.yml"
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - alertmanager:9093
+
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Frontend React App
+  - job_name: 'frontend'
+    static_configs:
+      - targets: ['frontend:3000']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+
+  # Backend Node.js API
+  - job_name: 'backend'
+    static_configs:
+      - targets: ['backend:5000']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+
+  # MongoDB
+  - job_name: 'mongodb'
+    static_configs:
+      - targets: ['mongodb:27017']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+
+  # Redis
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis:6379']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+
+  # IPFS Node
+  - job_name: 'ipfs'
+    static_configs:
+      - targets: ['ipfs-node:5001']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+
+  # Hardhat Network
+  - job_name: 'hardhat'
+    static_configs:
+      - targets: ['hardhat:8545']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+
+  # Nginx
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['nginx:80']
+    metrics_path: '/nginx_status'
+    scrape_interval: 30s
+
+  # Node Exporter (system metrics)
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+    scrape_interval: 30s
+
+  # Custom Blockchain Metrics
+  - job_name: 'blockchain-metrics'
+    static_configs:
+      - targets: ['backend:5000']
+    metrics_path: '/api/metrics/blockchain'
+    scrape_interval: 60s
+    params:
+      network: ['mumbai', 'polygon', 'sepolia', 'ethereum']
+
+  # Election Metrics
+  - job_name: 'election-metrics'
+    static_configs:
+      - targets: ['backend:5000']
+    metrics_path: '/api/metrics/elections'
+    scrape_interval: 60s
+
+  # User Metrics
+  - job_name: 'user-metrics'
+    static_configs:
+      - targets: ['backend:5000']
+    metrics_path: '/api/metrics/users'
+    scrape_interval: 60s
+
+  # IPFS Metrics
+  - job_name: 'ipfs-metrics'
+    static_configs:
+      - targets: ['backend:5000']
+    metrics_path: '/api/metrics/ipfs'
+    scrape_interval: 60s
+
+  # Meta-Transaction Metrics
+  - job_name: 'meta-transaction-metrics'
+    static_configs:
+      - targets: ['backend:5000']
+    metrics_path: '/api/metrics/meta-transactions'
+    scrape_interval: 60s
+
+  # ZK Proof Metrics
+  - job_name: 'zk-proof-metrics'
+    static_configs:
+      - targets: ['backend:5000']
+    metrics_path: '/api/metrics/zk-proofs'
+    scrape_interval: 60s
