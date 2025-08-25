@@ -61,3 +61,10 @@ temp/
 *.db
 *.sqlite
 *.sqlite3
+
+# Keep assets folder for screenshots and documentation
+!assets/
+!assets/*.png
+!assets/*.jpg
+!assets/*.jpeg
+!assets/*.gif
