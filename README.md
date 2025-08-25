@@ -4,6 +4,13 @@
 
 🔗 **Repository**: [https://github.com/AryanSahu2805/Blockchain-Based-Voting-System](https://github.com/AryanSahu2805/Blockchain-Based-Voting-System)
 
+## 📸 **Screenshots**
+
+<div align="center">
+  <img src="assets/Voting system Dashboard copy.png" alt="Blockchain Voting System Dashboard" width="800" />
+  <p><em>Real-time voting dashboard with live statistics and blockchain integration</em></p>
+</div>
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
 [![Solidity](https://img.shields.io/badge/Solidity-0.8.19-blue.svg)](https://soliditylang.org/)
